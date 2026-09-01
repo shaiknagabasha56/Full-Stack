@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form Elements Example</title>
+    </head>
+
+    <body>
+        <main>
+            <form action="/submit" method="POST">
+                <label for="username">username:</label>
+                <input type="text" id="username" name="username" minlength="3" maxlength="20" autocomplete="text" autofocus required>
+                <br><br>
+
+                <label for="phone">phone:</label>
+                <input type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]{10}" title="enter a 10 digit number" autocomplete="tel" required>
+                <br><br>
+
+                <label for="email">email:</label>
+                <input type="email" id="email" name="email" placeholder="eample@gmail.com" autocomplete="email" required>
+                <br><br>
+
+                <label for="password">password:</label>
+                <input type="password" id="password" name="password" minlength="8" required>
+                <br><br>
+
+                <label for="confirm_password">confirm password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" minlength="8" disabled>
+                <br><br>
+
+                <label for="website">website:</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com" autocomplete="url" readonly required>
+                <br><br>
+
+                <label for="dob">date of birth:</label>
+                <input type="date" id="dob" name="dob" required>
+                <br><br>
+
+                <label for="profile_picture">profile picture:</label>
+                <input type="file" id="profile_picture" name="profile_picture" accept=".jpg, .jpeg, .png" required>
+                <br><br>
+
+                <label for="gender">gender:</label>
+                <input type="radio" id="male" name="gender" value="male" required  checked>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other" required>
+                <label for="other">Other</label>
+                <br><br>
+
+                <label for="education">education:</label>
+                <input type="checkbox" id="10th" name="education" value="yes">
+                <label for="10th">10th</label>
+                <input type="checkbox" id="12th" name="education" value="yes">
+                <label for="12th">12th</label>
+                <input type="checkbox" id="graduation" name="education" value="yes">
+                <label for="graduation">graduation</label>
+                <br><br>
+
+                <label for="state">state:</label>
+                <select id="state" name="state" required>
+                    <option value="" selected>please choose option</option>
+                    <option value="telangana">telangana</option>
+                    <option value="andhra pradesh">andhra pradesh</option>
+                    <option value="karnataka">karnataka</option>
+                    <option value="tamil nadu">tamil nadu</option>
+                </select>
+                <br><br>
+
+                <label for="address">address:</label>
+                <textarea id="address" name="address" rows="5" cols="30" required></textarea>
+                <br><br>
+
+                <label>bio:</label>
+                <fieldset>
+                    <legend>write your bio here</legend>
+                    <label for="profession">profession:</label>
+                    <input type="text" id="profession" name="profession" required>
+                    <br><br>
+                    <label for="hobbies">hobbies:</label>
+                    <textarea id="hobbies" name="hobbies" rows="3" cols="30" required></textarea>
+                </fieldset>
+                <br><br>
+                <button type="submit">submit</button>
+                <button type="reset">reset</button>
+            </form>
+        </main>
+    </body>
+</html>
