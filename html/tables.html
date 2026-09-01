@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Tables
+        </title>
+    </head>
+    <body>
+        <header>
+            <h1><u>Tables in HTML</u></h1>
+        </header>
+        <main>
+            <table border="1" cellspacing="2" cellpadding="10" bgcolor="grey">
+                <caption>Table-1</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Frontend</th>
+                        <th scope="col">Backend</th>
+                        <th scope="col">Database</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML</td>
+                        <td>Python</td>
+                        <td>MySQL</td>
+                    </tr>
+                    <tr>
+                        <td>CSS</td>
+                        <td>Java</td>
+                        <td>MongoDB</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>PHP</td>
+                        <td>PostgreSQL</td>
+                    </tr>
+                    <tr>
+                        <td>Bootstrap</td>
+                        <td>Node.js</td>
+                        <td>Oracle</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                    <th scope="row">purpose</th>
+                    <td colspan="2">Full Stack Development</td>
+                    </tr>
+                    
+                </tfoot>
+            </table>
+        </main>
+        <section>
+            <h2>Problems on Tables</h2>
+            <table border="1" cellspacing="2" cellpadding="10">
+                <caption>Table-2</caption>
+                <thead>
+                    <tr>
+                        <th colspan="5">row-1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4">row-2</td>
+                        <td colspan="4">row-3</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" rowspan="2">row-4</td>
+                        <td rowspan="2">row-5</td>
+                        <td rowspan="2">row-6</td>
+                    </tr>
+                    <tr>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="4">row-7</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </body>
+</html>
