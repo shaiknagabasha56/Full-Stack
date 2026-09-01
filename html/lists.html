@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta >
+        <title>Types of Lists</title>
+    </head>
+
+    <body>
+        <main>
+            <h1>TYPES OF LISTS</h1>
+            <h3><u>Unordered List:</u></h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>Java</li>
+            </ul>
+            <h3><u>Ordered List:</u></h3>
+            <ol>
+                <li>networking</li>
+                <li>operating system</li>
+                <li>database management system</li>
+                <li>software engineering</li>
+            </ol>
+            <h3><u>Nested List:</u></h3>
+            <ul>
+                <li>Frontend:
+                    <ol type="A">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ol>
+                </li>
+                <li>Backend:
+                    <ol type="I" reversed>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>PHP</li>
+                    </ol>
+                </li>
+                <li>
+                    Database:
+                    <ol type="i" start="3">
+                        <li>MySQL</li>
+                        <li>MongoDB</li>
+                        <li>PostgreSQL</li>
+                    </ol>
+                </li>
+            </ul>
+            <h3><u>Definition/Description List:</u></h3>
+            <dl>
+                <dt><b>HTML:</b></dt>
+                <dd>Hypertext Markup Language</dd>
+                <dt><b>CSS:</b></dt>
+                <dd>Cascading Style Sheets</dd>
+                <dt><b>JavaScript:</b></dt>
+                <dd>A programming language for web development</dd>
+            </dl>
+            
+            <h3><u>value attribute in ordered list</u></h3>
+            <p>Works on ordered lists to specify the starting value for each list item.</p>
+            <h2>Without value attribute</h2>
+            <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+            </ol>
+            <h2>With value attribute</h2>
+            <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li value="10">Item 3</li>
+                <li>Item 4</li>
+            </ol>
+        </main>
+
+        <h3><u>Problem on nested lists:</u></h3>
+        <ol type="I">
+            <li>First Level</li>
+                <ol type="A">
+                    <li>Second Level</li>
+                    <li>Second Level</li>
+                        <ol type="1">
+                            <li>Third Level</li>
+                            <li>Third Level</li>
+                                <ol type="a">
+                                    <li>Fourth Level</li>
+                                    <li>Fourth Level</li>
+                                        <ol type="i">
+                                            <li>Fifth Level</li>
+                                            <li>Fifth Level</li>
+                                            <li>Fifth Level</li>
+                                            <li>Fifth Level</li>
+                                        </ol>
+                                    <li>Fourth Level</li>
+                                    <li>Fourth Level</li>
+                                </ol>
+                            <li>Third Level</li>
+                            <ol type="a">
+                                <li>Fourth Level</li>
+                                <li>Fourth Level</li>
+                            </ol>
+                            <li>Third Level</li>
+                        </ol>
+                    <li>Second Level</li>  
+                    <ol type="1">
+                        <li>Third Level</li>
+                        <li>Third Level</li>
+                    </ol>
+                    <li>Second Level</li>
+                </ol>
+            <li>First Level</li>
+                <ol type="A">
+                    <li>Second Level</li>
+                        <ol type="1">
+                            <li>Third Level</li>
+                            <li>Third Level</li>
+                            <ol type="a">
+                                <li>Fourth Level</li>
+                                <li>Fourth Level</li>
+                        </ol>
+                </ol>
+            <li>Second Level</li>
+            <li>Second Level</li>
+            <li>Second Level</li>
+        </ol>
+        <li>First Level</li>
+        </ol>
+
+    </body>
+</html>
