@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Internal CSS</title>
+        <style>
+            .login-card{
+                border: 2px solid black;
+                padding-left:150px;
+                padding-bottom: 20px;
+            }
+            .login-card h3{
+                color:rgb(204, 22, 53);
+                padding-left:40px;
+            }
+            .login-card button{
+                width:100px;
+
+            }
+            button:hover{
+                background-color:chartreuse;
+            }
+            label{
+                color:rgb(0, 165, 0);
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 100;
+            }
+            input:focus{
+                border:2px solid blue;
+                background-color:rgb(4, 168, 26);
+            }
+            
+        </style>
+
+    </head>
+    <body>
+        <div class="login-card">
+            <h3>Login Form</h3>
+            <form>
+                <label for="email">email:</label>
+                <br>
+                <input type="text" id="email" name="email" placeholder="ex:basha@gmail.com" minlength="3" required>
+                <br>
+                <label for="passwd">password:</label>
+                <br>
+                <input type="password" id="passwd" name="passwd" minlength="8" required>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+            
+        </div>
+
+    </body>
+</html>

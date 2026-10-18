@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reading data from HTML</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h3>This is a heading - 1</h3>
+        <p>This is a paragraph - 1</p>
+        
+        <form>
+            <p id="msg"></p>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username"  required>
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <br><br>
+            <button type="submit" id="sbt-btn">Submit</button>
+        </form>
+
+        <script>
+            //.textContent: used to read the text content of an element
+            const heading1 = document.querySelector("h3");
+            const para1 = document.querySelector("p");
+
+            console.log(heading1); //displays entire element including tags also
+            console.log("heading1:" + heading1.textContent); //displays only text in that element
+            console.log("para1:" + para1.textContent);
+
+            //.value: used to read the value of an input element
+            const submitBtn = document.getElementById("sbt-btn");
+            submitBtn.addEventListener("click",function(event){
+                event.preventDefault() //prevents the default action of the button (which is to submit the form and refresh the page)
+
+                const uname = document.getElementById("username");
+                const pass = document.getElementById("password");
+                const msg = document.getElementById("msg");
+
+                console.log(uname);
+                console.log(uname.value);
+                console.log(pass.value);
+
+                msg.textContent = "form submitted successfully";
+                msg.style.color = "green";
+
+                //setTimeout(): used to execute a function after a specified time (in milliseconds)
+                setTimeout(function(){  
+                    msg.textContent = "";
+                },3000)
+
+                uname.value = ""; //clears the value of the input field
+                pass.value = "";
+            })
+            
+
+
+            
+
+
+        </script>
+    </body>
+</html>

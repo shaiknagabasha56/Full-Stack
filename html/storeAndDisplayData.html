@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Store&Display Data</title>
+    </head>
+    <body>
+        <center><h1><u>Students data store and display Testing</u></h1></center>
+        <form>
+            Roll:<input type="number" id="roll" name="roll" required>
+            Name:<input type="text" id="name" name="name" required>
+            Marks:<input type="number" id="marks" name="marks" required>
+            <button id="sbt">Submit</button>
+        </form>
+        <h3>Student Data:</h3>
+        <div id="card"></div>
+
+        <script>
+            const roll = document.querySelector("#roll");
+            const name = document.querySelector("#name");
+            const marks = document.querySelector("#marks");
+            const submit = document.querySelector("#sbt");
+            const card = document.querySelector("#card");
+            
+            const students = [];
+
+            submit.addEventListener("click",(event)=>{
+                event.preventDefault();
+
+                const obj = {
+                    roll: roll.value.trim(),
+                    name: name.value.trim(),
+                    marks: marks.value.trim()
+                };
+
+                students.push(obj);
+
+                students.forEach(function(i){
+
+                    let newElement = document.createElement("p");
+                    newElement.textContent = `roll = ${i.roll} | name = ${i.name} | marks = ${i.marks}`;
+                    card.append(newElement);
+    
+                });
+            })
+
+
+
+        </script>
+    </body>
+</html>

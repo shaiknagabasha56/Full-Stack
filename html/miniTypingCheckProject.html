@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Mini Typing Checking Project
+        </title>
+    </head>
+    <body>
+        <hr>
+        <p id="normal-text">Hello everyone! My name is Shaik Nagabasha, Im studying Btech 3rd year in the stream of Computer Scinece & Engineering.I love coding mainly Full Stack Development.So for that Im practicing my coding skills by builting this kind of mini projects without using the help of AI models.So I hope these mini projects creats a lots of impact in my learning and finally thank you for visiting this site and hope you are doing well and typing well.</p>
+        <hr>
+        <p id="display-text"></p>
+        <label for="enterd-text">enter the above text:</label><br>
+        <textarea rows="10" cols="100" id="user-input"></textarea>
+
+        <script>
+            const normal_text = document.querySelector("#normal-text");
+            const display_text = document.querySelector("#display-text");
+            const user_input = document.querySelector("#user-input");
+            let modified_normal_text = "";
+            const original_text = normal_text.textContent;
+
+            //each charecter is placing inside the <span>char</span> because we cannot color to each charecter without span
+            for(let i=0; i < original_text.length; i++){
+                modified_normal_text += `<span>${normal_text.textContent[i]}</span>`;
+            }
+
+            normal_text.innerHTML = modified_normal_text;
+            const spans = normal_text.querySelectorAll("span");
+
+
+            user_input.addEventListener("input",function(){
+
+                display_text.textContent = user_input.value;
+                for(let i=0; i < spans.length; i++){
+                    if (i >= user_input.value.length) {
+                        spans[i].style.color = "";  //if user enterd more than the displayed text, no color applies
+                    } 
+                    else if (original_text[i] === user_input.value[i]){
+                        spans[i].style.color = "blue";  //if user entered char exactly matches the char in the above text: applies blue coloe
+                    } 
+                    else{
+                        spans[i].style.color = "red";   //if doesnt match, applies red color
+                    } 
+                }
+            })
+        </script>
+    </body>
+</html>

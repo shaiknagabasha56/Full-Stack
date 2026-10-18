@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events in js</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h3>This is simple form for testing "click" event</h3>
+        <form>
+            <p id="msg-box"></p>
+            <label for="username">enter username</label>
+            <input type="text" name="username" id="username" required>
+            <br><br>
+            <label for="email">enter email</label>
+            <input type="email" name="email" id="email" required>
+            <br><br>
+            <label for="passwd">enter password</label>
+            <input type="password" name="passwd" id="passwd" required>
+            <br><br>
+            <button id="sbt-btn">Submit</button>
+        </form>
+
+        <!-- for "change"  -->
+        <h3>This is simple form for testing "change" event</h3>
+        <h2>Select your course</h2>
+        <select id="course">
+            <option value="null">slect a course</option>
+            <option value="cse">CSE</option>
+            <option value="ece">ECE</option>
+            <option value="mech">MECH</option>
+            <option value="civil">CIVIL</option>
+            <option value="eee">EEE</option>
+        </select>
+        <p id="result">your selected course will appear here...</p>
+
+
+        <h3>This is simple form for testing "submit" event</h3>
+        <form id="studentForm">
+        <label for="studentName">username:</label>
+        <input type="text" id="studentName" name="studentName" required>
+        <br><br>
+        <label for="StudentPassword">password:</label>
+        <input type="password" id="StudentPassword" name="StudentPassword" required>
+        <br><br>
+        <button type="submit">Submit</button>
+        </form>
+        <p id="res2"></p>
+        <p id="res"></p>
+
+        <div id="card" style="width:200px;height:200px;border:2px solid black;background-color: red;">This is a card</div>
+
+        <script>
+            //1.click : happens when  user clicks on an element
+            const email = document.querySelector("#email");
+            const passwd = document.querySelector("#passwd");
+            const subBtn = document.querySelector("#sbt-btn");
+            const msg = document.querySelector("#msg-box");
+
+            
+            subBtn.addEventListener("click",function(event){
+                event.preventDefault();
+                console.log(`email = ${email.value}`);
+                console.log(`password = ${passwd.value}`);
+                msg.textContent = "form submitted successfully";
+                msg.style.color = "green";
+
+                email.value = "";
+                passwd.value = "";
+
+                setTimeout(function(){
+                    msg.textContent = "";
+                },3000)           
+            })
+
+            //2.input : happens when user types in an input field
+            const username = document.querySelector("#username");
+            const msgBox = document.querySelector("#msg-box");
+            username.addEventListener("input",function(){
+                msgBox.textContent = `Hello, ${username.value}`;
+                msgBox.style.color = "blue";
+            })
+
+            //3.change:happens when an elements value is changes and that change is commited
+            //for ex: checking/unchecking a checkbox, slecting different radio button,selecting differnt option from dropdown
+
+            const course = document.querySelector("#course");
+            const result = document.querySelector("#result");
+
+            course.addEventListener("change",function(){
+                result.textContent = `Your selected course is "${course.value}"`;
+            })
+
+            //4.submit: happens when an user submits an HTML form
+            const studentForm = document.querySelector("#studentForm");
+            const studentname = document.querySelector("#studentName");
+            const StudentPassword = document.querySelector("#StudentPassword");
+            const Result = document.querySelector("#res");
+            const res2 = document.querySelector("#res2");
+
+            studentForm.addEventListener("submit",function(event){
+                event.preventDefault();
+                const sName = studentname.value.trim();
+                const sPasswd = StudentPassword.value.trim();
+
+
+                Result.textContent = "Welcome " + sName+"! Your password is :" + sPasswd;  
+
+            })
+
+            //5.keydown:happens when an user presses a key on the keyboard
+            studentname.addEventListener("keydown",function(event){
+                res2.textContent = "You pressed: " + event.key;
+            })
+
+            //6.keydown:happens when an user presses a key on the keyboard
+            StudentPassword.addEventListener("keyup",function(event){
+                res2.textContent = "You released: " + event.key;
+            })
+
+            //7.focus:happens when an HTML element receives focus
+            //ex:highlighting the input field when user is typing something
+            studentname.addEventListener("focus",function(){
+                studentname.style.backgroundColor = "green";
+            })
+
+            //8.blur: happens when an elements loses focus
+            studentname.addEventListener("blur",function(){
+                console.log("user left the username filed.")
+            })
+
+            //9.mouseover:happens when the pointer/cursor hovers into an element
+            const card = document.querySelector("#card");
+            card.addEventListener("mouseover",function(){
+                card.style.backgroundColor = "green";
+            })
+            //10.mouseout:happens when pointer/cursor leaves an element
+            card.addEventListener("mouseout",function(){
+                card.style.backgroundColor = "blue";
+            })
+        </script>
+    </body>
+</html>

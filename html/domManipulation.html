@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Manipulation</title>
+
+        <style>
+            .highlight{
+                background-color: royalblue;
+            }
+        </style>
+    </head>
+    <body>
+       <center><h1><u>DOM Manipulation Testing Page</u></h1></center>
+       <!-- 1.Changing CSS classes using js -->
+        <nav style="width:100%;" id="nav-bar">
+            <ul style="display: flex;padding:20px;border:2px solid black;gap:30px;align-items: center;align-content: center;">
+                <li><button id="add">add</button></li>
+                <li><button id="remove">remove</button></li>
+                <li><button id="toggle">toggle</button></li>
+            </ul>
+        </nav>
+
+        <!-- 2.creating the HTML elements dynamically -->
+        <div id="container"></div>
+
+        <!-- 3.DOM traversal -->
+         <span id="eve">
+            <div id="box1">box-1</div>
+            <div id="box2">box-2</div>
+            <div id="box3">box-3</div>
+            <p id="eve-txt">This is a event 1</p>
+            <button id="del">delete</button>           
+         </span>
+
+        <!-- 4.displaying data form js to frontend webpage -->
+        <div id="cont">
+            <ul id="lst">
+            </ul>
+        </div>
+
+
+        <script>
+
+            //1.Changing CSS classes using js(classList)
+            const nav = document.querySelector("#nav-bar");
+            const add = document.querySelector("#add");
+            const toggle = document.querySelector("#toggle");
+            const remove = document.querySelector("#remove");
+
+            add.addEventListener("click",function(){
+                nav.classList.add("highlight"); //classList.add() -> used to add class to an element
+            })
+            
+            remove.addEventListener("click",function(){
+                nav.classList.remove("highlight"); //classList.remove() -> used to rmove class to an element
+            })
+
+            toggle.addEventListener("click",function(){
+                nav.classList.toggle("highlight"); //classList.toggle() -> used to Adds the class if it is absent, or removes it if it is present.
+            })
+
+
+            //2.creating the html elements dynamically using the js:
+            const container = document.querySelector("#container");
+            const para = document.createElement("p"); //used to create an HTML element dynamically
+            //element.remove() -> is used to remove an HTML element dynamically
+            //element.replace() -> is used to replace the existed HTML element dynamically
+            para.textContent = "This is a paragraph - 1 created dynamically using the js";
+            para.style.backgroundColor = "green";
+            container.append(para); //adds the new element after the existing element
+            //but container.prepend() -> adds the new element at the begining
+
+        
+        //3.DOM traversal:-
+        //3.1:parentElement -> returns the immediate parent of the selected element
+        const p = document.querySelector("#eve-txt");
+        const eve = document.querySelector("#eve");
+        const del = document.querySelector("#del");
+
+        console.log(p.parentElement);
+        //3.2:children -> returns the direct children of an element as a js collection
+        for(let i=0; i < eve.children.length; i++){
+            console.log(eve.children[i]);
+        }
+        //3.3:closest() -> searches the selected element itself and then its ancestors, moving upward until it finds the nearest element matching  CSS selector
+        console.log(del.closest("#eve"));
+        //3.4: nextElementSibling -> selects the next sibling element at the same level in the HTML structure
+        const box1 = document.querySelector("#box1");
+        console.log(box1.nextElementSibling.textContent);
+        //3.5: previousElementSibling -> selects the previous element at the same level
+        const box3 = document.querySelector("#box3");
+        console.log(box3.previousElementSibling.textContent);
+
+        //4.displaying data from the js to frontend page:
+        const arr = ["cse","ece","eee","mech","civil","chem"];
+        arr.forEach(function(i){
+            let list = document.querySelector("#lst");
+            let newELe = document.createElement("li")
+            newELe.textContent = i;
+            list.append(newELe);
+        })
+        //array of objects with student details
+        const students = [
+            {
+                name:"basha",
+                roll:46,
+                marks:100
+            },
+            {
+                name:"mani",
+                roll:29,
+                marks:90
+            },
+            {
+                name:"rahul",
+                roll:24,
+                marks:80
+            }
+        ]
+        students.forEach(function(i){
+            let list = document.querySelector("#lst");
+            let newEl = document.createElement("li");
+            newEl.textContent = `roll = ${i.roll} | name = ${i.name} | marks = ${i.marks}`;
+            list.append(newEl);
+
+
+        })
+
+
+
+
+
+        </script>
+    </body>
+</html>

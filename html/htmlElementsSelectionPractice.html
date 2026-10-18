@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HTML Elements Selection Practice</title>
+        <meta charset="utf-8" viewport="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <!-- method-1: for document.getElementById() -->
+
+        <h3 id="main-heading">Welcome to my Webpage</h3>
+        <p id="main-para">this is the main paragraph</p>
+
+        <!-- method-2: for document.querySelector() -->
+
+        <h3 id="title">This is a Title</h3>
+        <p class="message">This is a message-1</p>
+        <p class="message">This is another message-2</p>
+
+        <!-- method-3: for document.querySelectorAll() -->
+
+        <p class="pg">Paragraph-1</p>
+        <p class="pg">Paragraph-2</p>
+        <p class="pg">Paragraph-3</p>
+
+        <!-- method-4: for document.getElementsByClassName() -->
+
+        <p class="mes">This is a message - 1</p>
+        <p class="mes">This is a message - 2</p>
+        <p class="mes">This is a message - 3</p>
+
+        <!-- method-5: for document.getElementsByTagName() -->
+
+        <h3>Login Form</h3>
+        <form id="login-form">
+            <label for="uname">username:</label>
+            <input type="text" name="username" id="uname" required>
+            <br><br>
+            <label for="pass">password:</label>
+            <input type="password" name="password" id="pass" required>
+            <br><br>
+            <input type="submit" id="login-btn" value="Login">
+        </form>
+
+        <!--  -->
+
+    
+    <script>
+        const heading = document.getElementById("main-heading");
+        const para = document.getElementById("main-para");
+        //METHOD-1: selecting the element using the document.getElementById(id of element)
+
+        console.log(heading); //displays entire element including tags also
+        console.log(heading.textContent);  //displays only text in that element
+        console.log(para.textContent)
+
+        //METHOD-2: selecting the element using the document.querySelector(selector)
+
+        const title = document.querySelector("#title");
+        const message = document.querySelector(".message") //selects the first element with class message
+        const paragraph = document.querySelector("p") //selects the first paragraph element
+
+        console.log(title);
+        console.log(title.textContent);
+        console.log(message.textContent);
+        console.log(paragraph.textContent);
+
+        //METHOD-3: selecting the element using the document.querySelectorAll(selector)
+        const pg = document.querySelectorAll(".pg") //selects all the elements with class pg
+        console.log(pg);
+        console.log("length=" + pg.length); //displays the number of elements with class pg
+        console.log("para1=" + pg[0].textContent); //displays the text of first element with class pg
+        console.log("para2=" + pg[1].textContent); //displays the text of second element with class pg
+        console.log("para3=" + pg[2].textContent); //displays the text of third element with class pg
+        //console.log("para4=" + pg[3].textContent); //displays undefined as there is no fourth element with class pg
+
+        //display all the elements with class pg using for loop
+        console.log("displaying using the loop:")
+        for(let i=0; i < pg.length; i++){
+            console.log(`para-${i+1} = ${pg[i].textContent}`);
+        }
+
+        //display all the elements with class pg using forEach loop
+        console.log("displaying using the forEach loop:")
+        pg.forEach(function(elements){
+            console.log(elements.textContent);
+        });
+
+        //display all the elements with class pg using loop with arrow function
+        console.log("displaying using the forEach loop with arrow function:")
+        pg.forEach((elements) => {
+            console.log(elements.textContent);
+        });
+
+
+        //METHOD-4: selecting the element using the document.getElementsByClassName(class name)
+        //This Select all elements having a particular class name
+        const mes = document.getElementsByClassName("mes");
+        //displaying all the elements with class "mes" using for loop
+        for(let i=0; i < mes.length; i++){
+            console.log(mes[i].textContent);
+        }
+
+        //METHOD-5: selecting the element using the document.getElementsByTagName(tag name)
+        //This Select all elements having a particular tag name
+
+        const p = document.getElementsByTagName("p");
+        const h = document.getElementsByTagName("h3");
+        //displaying all the elements with tag name "p" using for loop
+        for(let i=0; i < p.length; i++){
+            console.log(p[i].textContent);
+        }
+
+        //displaying all the elements with tag name "h3" using for loop
+        for(let i=0; i < h.length; i++){
+            console.log(h[i].textContent);
+        }
+
+        //METHOD-6: selecting the element using the document.getElementsByName(name)
+        //This Select all elements having a particular name attribute (mostly used for form elements
+        const username = document.getElementsByName("username");
+        const password = document.getElementsByName("password");
+
+        console.log("username = " + username[0].value);
+        console.log("password = " + password[0].value);
+
+        //METHOD-7: selecting the element using the document.forms[index]
+        //This Select all elements having a particular name attribute (mostly used for form elements)
+        //Access forms and their controls through the browser's form collections.
+        const loginForm = document.forms["login-form"];
+        const uname = loginForm.elements["username"];
+        const pass = loginForm.elements["password"];
+        
+        console.log(loginForm);
+        console.log(uname);
+        console.log("pass=" + pass.value);
+
+        //METHOD-8: event.target
+        document.addEventListener("click", (event) => {
+            console.log(event.target);
+        });
+
+        // When you click the button, event.target refers to the element that originated the click. If you click some other element on the page, it can refer to that other element instead.
+
+    </script>
+    </body>
+</html>

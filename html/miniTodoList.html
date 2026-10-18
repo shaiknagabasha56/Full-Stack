@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mini To do List</title>
+        <style>
+            .new-event{
+                border:2px solid black;
+                height:30px;
+                width:50vw;
+                margin:20px;
+                padding:10px;
+                overflow:auto;
+                font-family: 'Courier New', Courier, monospace;
+
+            }
+            .del-btn{
+                padding:2px;
+                margin-left:49vw;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+        </style>
+    </head>
+    <body>
+        <center><h1><u>Mini To do List</u></h1></center>
+        <button id="add-event-btn">Add New event +</button>
+        <br><br>
+        <div id="msg-box"></div>
+        <textarea id="input-box" rows="6" cols="80" placeholder="type event here...."  required style="display:none;"></textarea>
+        <br>
+        <div id="buttons" style="display: flex; gap:10px">
+        <button id="event-confirm-btn" style="display: none;">confirm</button>
+        <button id="event-close-btn" style="display: none;">close</button>
+        </div>
+
+        <hr>
+        <div id="event-display-container">
+            
+        </div>
+
+
+    <script>
+        const add_event_btn = document.querySelector("#add-event-btn");
+        const input_box = document.querySelector("#input-box");
+        const event_confirm_btn = document.querySelector("#event-confirm-btn");
+        const event_close_btn = document.querySelector("#event-close-btn");
+        const event_display_container = document.querySelector("#event-display-container");
+        const msg_box = document.querySelector("#msg-box");
+
+        let ele;
+        let del_btn;
+
+        add_event_btn.addEventListener("click",function(){
+
+            msg_box.textContent = "";
+            input_box.style.display = "block";
+            event_close_btn.style.display = "block";
+            event_confirm_btn.style.display = "block";
+            
+        });
+
+        event_confirm_btn.addEventListener("click",function(){
+            const event_text = input_box.value.trim();
+
+            if (event_text === ""){
+                msg_box.textContent = "add event or close the window"
+                msg_box.style.color = "red";
+                return;
+            }
+
+            const ele = document.createElement("div");
+            const del_btn = document.createElement("button");
+            
+            ele.textContent = event_text;
+            del_btn.textContent = "delete";
+
+            ele.classList.add("new-event");
+            del_btn.classList.add("del-btn");
+
+            event_display_container.append(ele,del_btn);
+
+            del_btn.addEventListener("click",function(){
+                ele.remove();
+                del_btn.remove();
+            });
+
+            input_box.value = "";
+            input_box.style.display = "none";
+            event_confirm_btn.style.display = "none";
+            event_close_btn.style.display = "none";
+        });
+
+        event_close_btn.addEventListener("click",function(){
+            msg_box.textContent = "";
+            input_box.value = "";
+            input_box.style.display = "none";
+            event_confirm_btn.style.display = "none";
+            event_close_btn.style.display = "none";
+        });
+    </script>
+    </body>
+</html>

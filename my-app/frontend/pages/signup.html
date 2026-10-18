@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Sign Up</title>
+    <link rel="stylesheet" href="../css/signup.css">
+    <script src="../js/signup.js" defer></script>
+</head>
+<body>
+    <main class="signup-container">
+        <h1>Create Account</h1>
+        <p>Join the Student Portal</p>
+
+        <form id="signupForm">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName"
+                   type="text" minlength="2" maxlength="100"
+                   autocomplete="name" required>
+
+            <label for="email">Email address</label>
+            <input id="email" name="email"
+                   type="email" maxlength="254"
+                   autocomplete="email" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password"
+                   type="password" minlength="8" maxlength="72"
+                   autocomplete="new-password" required>
+
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" name="confirmPassword"
+                   type="password" minlength="8" maxlength="72"
+                   autocomplete="new-password" required>
+
+            <button type="submit" id="signupButton">
+                Create Account
+            </button>
+
+            <p id="message" role="status" aria-live="polite"></p>
+        </form>
+    </main>
+</body>
+</html>

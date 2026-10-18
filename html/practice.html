@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale1.0">
+        <meta charset="UTF-8">
+        <title>PracticePage</title>
+    </head>
+    <body>
+        <main>
+            <h2><center>Interactie HTML</center></h2>
+            <section>
+                <header><h3>details and summary</h3></header>
+                <details>
+                    <summary>What is HTML</summary>
+                    <p>HTML is a markup language used for web designs</p>
+                </details>
+                <details open>
+                    <summary>What is Python</summary>
+                    <p>Python is a programming language</p>
+                </details>
+                <details>
+                    <summary>What is MySQL</summary>
+                    <p>MySQL is a database used to store data</p>
+                </details>
+            </section>
+
+            <section>
+                <header><h3>Dialog box</h3></header>
+                <button onclick="document.querySelector('dialog').showModal()">open</button>
+                <dialog>
+                    <h4>WELCOME</h4>
+                    <p>Welcome to our Website</p>
+                    <button onclick="document.querySelector('dialog').close()">close</button>
+                </dialog>
+            </section>
+        </main>
+    </body>
+</html>
