@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crud Operations Practice</title>
+    </head>
+    <body>
+        <center><u><h1>Crud Operations Practice Testing</h1></u></center>
+        <!-- taking employees data --> 
+        <button id="display-inputs-btn">Add new Employees +</button>
+        <br><br>
+        <div id="display-inputs-box" style="display:none;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+            <br><br>
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" required>
+            <br><br>
+            <button id="inputs-confirm-btn">confirm</button>
+            <button id="inputs-close-btn">close</button>
+        </div>
+        <hr>
+        <h3>Employees are:</h3>
+        <div id="display-box"></div>
+
+
+        <script>
+            const display_inputs_btn = document.querySelector("#display-inputs-btn");
+            const display_inputs_box = document.querySelector("#display-inputs-box");
+            const name = document.querySelector("#name");
+            const age = document.querySelector("#age");
+            const salary = document.querySelector("#salary");
+            const inputs_confirm_btn = document.querySelector("#inputs-confirm-btn");
+            const inputs_close_btn = document.querySelector("#inputs-close-btn");
+            const displayBox = document.querySelector("#display-box");
+            let employees = [
+                {name:"nagabasha",age:22,salary:30000}
+            ];
+
+            function displayEmployees(){
+                displayBox.innerHTML = "";
+                employees.forEach(function(emp,index){
+
+                    let Ename = document.createElement("h4");
+                    let Eage = document.createElement("p");
+                    let Esalary = document.createElement("p");
+                    let edit = document.createElement("button");
+                    let del = document.createElement("button");
+                    let nameBtn = document.createElement("button");
+                    let ageBtn = document.createElement("button");
+                    let salaryBtn = document.createElement("button");
+                    let input = document.createElement("input");
+                    let cfmEdit = document.createElement("button");
+                    let closeEdit = document.createElement("button");
+                    let fieldToEdit;
+
+                    nameBtn.textContent = "edit name";
+                    ageBtn.textContent = "edit age";
+                    salaryBtn.textContent = "edit salary";
+                    cfmEdit.textContent = "confirm";
+                    cfmEdit.style.display = "none";
+                    closeEdit.style.display = "none";
+                    input.style.display = "none";
+                    closeEdit.textContent = "close";
+                    Ename.textContent = emp.name;
+                    Eage.textContent = emp.age;
+                    edit.textContent = "edit";
+                    del.textContent = "delete";
+                    Esalary.textContent = emp.salary;
+
+
+                    del.addEventListener("click",function(){
+                       employees.splice(index,1);
+                       displayEmployees();
+                    });
+
+                    edit.addEventListener("click",function(){
+                        Ename.append(nameBtn,ageBtn,salaryBtn,input,cfmEdit,closeEdit);
+                        nameBtn.style.display = "block";
+                        nameBtn.style.display = "inline";
+                        ageBtn.style.display = "block";
+                        ageBtn.style.display = "inline"
+                        salaryBtn.style.display = "block";
+                        salaryBtn.style.display = "inline";
+                    });
+
+                    nameBtn.addEventListener("click",function(){
+                        input.style.display = "block";
+                        cfmEdit.style.display = "block";
+                        closeEdit.style.display = "block";
+                        cfmEdit.style.display = "block";
+                        closeEdit.style.display = "block";
+                        input.style.display = "block";
+                        input.value = emp.name;
+                        fieldToEdit = "name";
+                    });
+
+                    ageBtn.addEventListener("click",function(){
+                        input.style.display = "block";
+                        cfmEdit.style.display = "block";
+                        closeEdit.style.display = "block";
+                        cfmEdit.style.display = "block";
+                        closeEdit.style.display = "block";
+                        input.style.display = "block";
+                        input.value = emp.age;
+                        fieldToEdit = "age";
+                    });
+
+                    salaryBtn.addEventListener("click",function(){
+                        input.style.display = "block";
+                        cfmEdit.style.display = "block";
+                        closeEdit.style.display = "block";
+                        cfmEdit.style.display = "block";
+                        closeEdit.style.display = "block";
+                        input.style.display = "block";
+                        input.value = emp.salary;
+                        fieldToEdit = "salary";
+                    });
+
+                    cfmEdit.addEventListener("click",function(){
+                        if(input.value == ""){
+                            alert("enter data or close the window");
+                            return;
+                        }
+                        employees[index][fieldToEdit] = input.value.trim();
+                        input.value = "";
+                        displayEmployees();
+                        
+                    });
+
+                    closeEdit.addEventListener("click",function(){
+                        input.style.display = "none";
+                        cfmEdit.style.display = "none";
+                        closeEdit.style.display = "none";
+                        nameBtn.style.display = "none";
+                        ageBtn.style.display = "none";
+                        salaryBtn.style.display = "none";
+
+                    });
+
+
+
+                    displayBox.append(Ename,Eage,Esalary,edit,del);
+
+
+                });
+            }
+
+            displayEmployees();
+
+            display_inputs_btn.addEventListener("click",function(){
+                display_inputs_box.style.display = "block";
+            });
+
+            inputs_close_btn.addEventListener("click",function(){
+                name.value = "";
+                age.value = "";
+                salary.value= "";
+                display_inputs_box.style.display = "none";
+
+
+            });
+
+            inputs_confirm_btn.addEventListener("click",function(){
+                if (name.value.trim() === "" || age.value.trim() === "" || salary.value.trim() === ""){
+                    alert("please enter the details or close the form");
+                    return;
+                };
+
+                // inserting values into an array:-
+                const obj = {
+                    name:name.value.trim(),
+                    age:Number(age.value),
+                    salary:Number(salary.value)
+                };
+
+                employees.push(obj);
+                displayEmployees();
+                name.value = "";
+                age.value = "";
+                salary.value = "";
+                display_inputs_box.style.display = "none";
+                
+
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Displaying data on frontend</title>
+        <style>
+            .newEle{
+                color: rgb(51, 11, 231);
+                margin: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><u><h1>Displaying data from js to frontned Testing</h1></u></center>
+
+        <button id="display-inputs-btn">add new employee +</button>
+        <br><br>
+
+        <div id="input-form" style="display: none;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <br><br>
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" required>
+        <br><br>
+        <button id="input-confirm-btn">confirm</button>
+        <button id="input-close-btn">close</button>
+        </div>
+        
+        <hr>
+
+        <div id="display-data"></div>
+
+
+
+        <script>
+            const data = [
+                {name:"Basha",age:20,salary:50000},
+                {name:"Rahul",age:21,salary:40000},
+                {name:"Manisharma",age:22,salary:45000}
+            ];
+
+            const display = document.querySelector("#display-data");
+            const display_inputs_button = document.querySelector("#display-inputs-btn");
+            const inputForm = document.querySelector("#input-form");
+            const confirmBtn = document.querySelector("#input-confirm-btn");
+            const closeBtn = document.querySelector("#input-close-btn");
+            const name = document.querySelector("#name");
+            const age = document.querySelector("#age");
+            const salary = document.querySelector("#salary");
+
+            
+function displayData() {
+    display.innerHTML = "";
+
+    data.forEach(function(emp, index) {
+        let newElement = document.createElement("p");
+        let delBtn = document.createElement("button");
+        let editBtn = document.createElement("button");
+
+        let nameEdit = document.createElement("button");
+        let ageEdit = document.createElement("button");
+        let salaryEdit = document.createElement("button");
+
+        let input = document.createElement("input");
+        let confirmEdit = document.createElement("button");
+
+        let fieldToEdit = "";
+
+        newElement.textContent =
+            `${index + 1}. Name:${emp.name} | Age:${emp.age} | Salary:${emp.salary}`;
+
+        delBtn.textContent = "delete";
+        editBtn.textContent = "edit";
+        nameEdit.textContent = "edit name";
+        ageEdit.textContent = "edit age";
+        salaryEdit.textContent = "edit salary";
+        confirmEdit.textContent = "confirm";
+
+        input.style.display = "none";
+        confirmEdit.style.display = "none";
+
+        delBtn.addEventListener("click", function() {
+            data.splice(index, 1);
+            displayData();
+        });
+
+        editBtn.addEventListener("click", function() {
+            newElement.append(
+                nameEdit, ageEdit, salaryEdit, input, confirmEdit
+            );
+        });
+
+        nameEdit.addEventListener("click", function() {
+            fieldToEdit = "name";
+            input.type = "text";
+            input.value = emp.name;
+            input.style.display = "inline";
+            confirmEdit.style.display = "inline";
+        });
+
+        ageEdit.addEventListener("click", function() {
+            fieldToEdit = "age";
+            input.type = "number";
+            input.value = emp.age;
+            input.style.display = "inline";
+            confirmEdit.style.display = "inline";
+        });
+
+        salaryEdit.addEventListener("click", function() {
+            fieldToEdit = "salary";
+            input.type = "number";
+            input.value = emp.salary;
+            input.style.display = "inline";
+            confirmEdit.style.display = "inline";
+        });
+
+        confirmEdit.addEventListener("click", function() {
+            let value = input.value.trim();
+
+            if (value === "") {
+                alert("Please enter a value");
+                return;
+            }
+
+            if (fieldToEdit === "") {
+                return;
+            }
+
+            if (fieldToEdit === "name") {
+                data[index].name = value;
+            } else {
+                const numberValue = Number(value);
+
+                if (!Number.isFinite(numberValue) || numberValue < 0) {
+                    alert("Please enter a valid non-negative number");
+                    return;
+                }
+
+                data[index][fieldToEdit] = numberValue;
+            }
+
+            displayData();
+        });
+
+        newElement.classList.add("newEle");
+        display.append(newElement, delBtn, editBtn);
+    });
+}
+
+displayData();
+
+
+            
+            
+            
+            display_inputs_button.addEventListener("click",function(){
+                inputForm.style.display = "block"
+            });
+
+            confirmBtn.addEventListener("click",function(){
+                    if (name.value.trim()=="" ||  age.value.trim()=="" || salary.value.trim()==""){
+                        alert("please enter all fields")
+                        return;
+                    };
+
+                    const employees = {
+                        name:name.value,
+                        age:Number(age.value),
+                        salary:Number(salary.value)
+                    };
+                    data.push(employees);
+                    displayData();
+                    name.value = "";
+                    age.value = "";
+                    salary.value = "";
+                    inputForm.style.display = "none";     
+            });
+
+            closeBtn.addEventListener("click",function(){
+                    name.value = "";
+                    age.value = "";
+                    salary.value = "";
+                    inputForm.style.display = "none";
+            })
+            
+            
+
+
+            
+            
+            
+            
+
+        </script>
+    </body>
+</html>
